@@ -11,8 +11,13 @@ const initState = {
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initState);
+  function formatMoney(money) {
+    return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
   return (
-    <CartContext.Provider value={{ ...state }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ ...state, formatMoney }}>
+      {children}
+    </CartContext.Provider>
   );
 };
 
