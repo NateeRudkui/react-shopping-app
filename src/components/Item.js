@@ -1,3 +1,4 @@
+import "./Item.css";
 export default function Item(props) {
   const { id, name, price, image, quantity } = props;
   return (
