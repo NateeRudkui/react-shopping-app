@@ -7,7 +7,7 @@ export default function Cart() {
     <div className="cart">
       <h1 style={{ textAlign: "center" }}>
         {products.length > 0
-          ? `ยอดชำระเงิน : ${total} บาท`
+          ? `ยอดชำระเงิน : ${formatMoney(total)} บาท`
           : "ไม่มีสินค้าในตะกล้า"}
       </h1>
       {products.map((data) => {

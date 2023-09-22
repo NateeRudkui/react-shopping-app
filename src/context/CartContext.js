@@ -15,13 +15,14 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "REMOVE", payload: id });
   }
   function formatMoney(money) {
-    return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    if (money)
+      return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
   function addQuantity(id) {
     dispatch({ type: "ADD", payload: id });
   }
   useEffect(() => {
-    console.log("คำนวนผลรวม");
+    console.log("คำนวนผลรวม", state);
     dispatch({ type: "CALCULATE_TOTAL" });
   }, [state.products]);
   return (
