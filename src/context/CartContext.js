@@ -17,12 +17,17 @@ export const CartProvider = ({ children }) => {
   function formatMoney(money) {
     return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
+  function addQuantity(id) {
+    dispatch({ type: "ADD", payload: id });
+  }
   useEffect(() => {
     console.log("คำนวนผลรวม");
     dispatch({ type: "CALCULATE_TOTAL" });
   }, [state.products]);
   return (
-    <CartContext.Provider value={{ ...state, formatMoney, removeItem }}>
+    <CartContext.Provider
+      value={{ ...state, formatMoney, removeItem, addQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );
